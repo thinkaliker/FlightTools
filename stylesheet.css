@@ -1,0 +1,245 @@
+/* ---- Departure-board vernacular: monospace codes, quiet chrome, one amber accent ---- */
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --panel-2: #1c232d;
+  --line: #2a333f;
+  --ink: #e6edf3;
+  --ink-dim: #8b96a5;
+  --amber: #ffb454;
+  --green: #57d38c;
+  --red: #ff6b6b;
+  --focus: #4a9eff;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+.mono {
+  font-family:
+    ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+header h1 {
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0;
+}
+header .sub {
+  color: var(--ink-dim);
+  font-size: 12px;
+}
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* entry form */
+.entry {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.grid {
+  display: grid;
+  gap: 12px 14px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.field label {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.field input,
+.field select {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 8px 9px;
+  font-size: 13px;
+  width: 100%;
+}
+.field input.mono {
+  text-transform: uppercase;
+}
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -1px;
+}
+.field .hint {
+  font-size: 10px;
+  color: var(--ink-dim);
+}
+.req label::after {
+  content: " *";
+  color: var(--amber);
+}
+
+.row-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+button {
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--ink);
+}
+button:hover {
+  border-color: var(--ink-dim);
+}
+button.primary {
+  background: var(--amber);
+  color: #1a1205;
+  border-color: var(--amber);
+  font-weight: 600;
+}
+button.ghost {
+  background: transparent;
+}
+button.danger {
+  color: var(--red);
+}
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.err {
+  color: var(--red);
+  font-size: 12px;
+}
+
+/* table */
+.count {
+  color: var(--ink-dim);
+  font-size: 12px;
+  margin: 4px 0 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+th {
+  color: var(--ink-dim);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 10px;
+}
+tbody tr:hover {
+  background: var(--panel);
+}
+td.leg {
+  color: var(--amber);
+}
+td.canceled {
+  color: var(--red);
+}
+.tbl-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--ink-dim);
+}
+.x {
+  background: none;
+  border: none;
+  color: var(--ink-dim);
+  cursor: pointer;
+  padding: 2px 6px;
+}
+.x:hover {
+  color: var(--red);
+}
+
+/* export bar */
+.export {
+  margin-top: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.export .grow {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+.note {
+  font-size: 12px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.note strong {
+  color: var(--amber);
+}
+.schema {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--ink-dim);
+}
+.schema code {
+  color: var(--ink);
+  background: var(--panel-2);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

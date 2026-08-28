@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flight Log → CSV</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Flight Log → CSV</h1>
+      <span class="sub"
+        >Enter past flights · export a CSV Aviate can import</span
+      >
+    </header>
+
+    <main>
+      <!-- ENTRY -->
+      <div class="entry">
+        <div class="grid">
+          <div class="field req">
+            <label for="date">Date</label>
+            <input type="date" id="date" />
+          </div>
+          <div class="field req">
+            <label for="airline">Airline</label>
+            <input
+              type="text"
+              id="airline"
+              class="mono"
+              maxlength="3"
+              placeholder="AA"
+            />
+            <span class="hint">IATA (AA) or ICAO (AAL)</span>
+          </div>
+          <div class="field req">
+            <label for="flight">Flight #</label>
+            <input type="text" id="flight" class="mono" placeholder="100" />
+          </div>
+          <div class="field req">
+            <label for="from">From</label>
+            <input
+              type="text"
+              id="from"
+              class="mono"
+              maxlength="4"
+              placeholder="JFK"
+            />
+          </div>
+          <div class="field req">
+            <label for="to">To</label>
+            <input
+              type="text"
+              id="to"
+              class="mono"
+              maxlength="4"
+              placeholder="LHR"
+            />
+          </div>
+          <div class="field">
+            <label for="dep">Departure (local)</label>
+            <input type="time" id="dep" />
+          </div>
+          <div class="field">
+            <label for="arr">Arrival (local)</label>
+            <input type="time" id="arr" />
+          </div>
+          <div class="field">
+            <label for="seat">Seat</label>
+            <input type="text" id="seat" class="mono" placeholder="14A" />
+          </div>
+          <div class="field">
+            <label for="cabin">Cabin</label>
+            <select id="cabin">
+              <option value=""></option>
+              <option>Economy</option>
+              <option>Premium Economy</option>
+              <option>Business</option>
+              <option>First</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="aircraft">Aircraft</label>
+            <input type="text" id="aircraft" placeholder="Boeing 777-300ER" />
+          </div>
+          <div class="field">
+            <label for="tail">Tail #</label>
+            <input type="text" id="tail" class="mono" placeholder="N123AA" />
+          </div>
+          <div class="field">
+            <label for="pnr">PNR</label>
+            <input type="text" id="pnr" class="mono" placeholder="ABC123" />
+          </div>
+          <div class="field">
+            <label for="notes">Notes</label>
+            <input type="text" id="notes" placeholder="" />
+          </div>
+          <div class="field">
+            <label for="canceled">Canceled</label>
+            <select id="canceled">
+              <option value="">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="add">Add flight</button>
+          <button class="ghost" id="clearForm">Clear fields</button>
+          <span class="err" id="formErr"></span>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="count" id="count">0 flights</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Leg</th>
+              <th>Flight</th>
+              <th>Dep</th>
+              <th>Arr</th>
+              <th>Seat</th>
+              <th>Cabin</th>
+              <th>Aircraft</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="empty">No flights yet. Add one above.</div>
+      </div>
+
+      <!-- EXPORT -->
+      <div class="export">
+        <div class="field" style="min-width: 180px">
+          <label for="format">Export format</label>
+          <select id="format">
+            <option value="flighty">Flighty (recommended)</option>
+            <option value="flighty-min">Flighty — core columns only</option>
+          </select>
+        </div>
+        <div class="grow note" id="formatNote"></div>
+        <button class="primary" id="exportCsv">Download CSV</button>
+        <button class="ghost" id="saveJson">Backup (JSON)</button>
+        <button class="ghost" id="loadJson">Restore</button>
+        <button class="ghost danger" id="wipe">Delete all</button>
+        <input type="file" id="jsonFile" accept="application/json" hidden />
+      </div>
+
+      <div class="schema" id="schemaLine"></div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
